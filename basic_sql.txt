@@ -1,0 +1,28 @@
+CREATE DATABASE school_db;
+USE school_db;
+
+CREATE TABLE students (
+    id INT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    height DECIMAL(5, 2)
+);
+
+//add record
+INSERT INTO students (id, name, height) 
+VALUES (1, 'Alice', 182.5);
+
+//modify
+UPDATE students 
+SET height = 185.0 
+WHERE id = 1;
+
+//delete
+DELETE FROM students 
+WHERE id = 1;
+
+//select
+SELECT name FROM students;
+
+
+
+
