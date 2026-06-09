@@ -7,4 +7,4 @@ sqldb: Contains the python code that connects python to the school_db, allowing 
 ## Week 2
 mysql_helper: Contains the helper class that connects the database to python to allow direct manipulation of database on python.
 
-scraper: Contains the BaiduTrendScraper that can obtain the top 10 searchs on Baidu and store them in a database.
+scraper: Contains the BaiduTrendScraper that can obtain the top 10 searchs on Baidu and store them in a database. Need mysql_helper to work
