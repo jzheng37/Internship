@@ -8,3 +8,6 @@ sqldb: Contains the python code that connects python to the school_db, allowing 
 mysql_helper: Contains the helper class that connects the database to python to allow direct manipulation of database on python.
 
 scraper: Contains the BaiduTrendScraper that can obtain the top 10 searchs on Baidu and store them in a database. Need mysql_helper to work
+
+## Week 3
+doubanScraper: automatically scraps the top 100 films from douban.com with basic info such as rating and vote count into a database that allows further visualization if needed.
