@@ -97,14 +97,20 @@ class doubanFilmScraper:
         self.db.execute_modify(truncate_sql)
 
         insert_sql = "INSERT INTO doubanFilm_trends (rank_num, title_CHI, title_FOR,rating, vote_count, release_year) VALUES (%s, %s, %s,%s, %s, %s);"
+        values_to_insert = [
+            (
+                item['rank_num'],
+                item['title_CHI'],
+                item['title_FOR'],
+                item['rating'],
+                item['vote_count'],
+                item['release_year']
+            )
+            for item in trends
+        ]
 
-        saved_count = 0
-        for item in trends:
-            success = self.db.execute_modify(insert_sql, (item['rank_num'], item['title_CHI'], item['title_FOR'], item['rating'], item['vote_count'], item['release_year']))
-            if success:
-                saved_count += 1
-
-        print(f"Saved {saved_count} entries successfully.")
+        saved_count = self.db.execute_modify_many(insert_sql, values_to_insert)
+        print(f"Saved {saved_count} entries successfully in a single batch.")
 
 if __name__ == "__main__":
     scraper = doubanFilmScraper(db_name="school_db")

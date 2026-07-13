@@ -29,6 +29,21 @@ class MySQLHelper:
             cursor.close()
             conn.close()
 
+    def execute_modify_many(self, sql, params_list):
+        conn = self._get_connection()
+        cursor = conn.cursor()
+        try:
+            cursor.executemany(sql, params_list)
+            conn.commit()
+            return cursor.rowcount
+        except Error as e:
+            print(f"[Database Error]: {e}")
+            conn.rollback()
+            return 0
+        finally:
+            cursor.close()
+            conn.close()
+
     def execute_query(self, sql, params=None):
         conn = self._get_connection()
         cursor = conn.cursor(dictionary=True)
